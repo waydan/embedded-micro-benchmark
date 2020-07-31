@@ -20,12 +20,13 @@
 
 
 /* Constants used in this module */
-    .equ    SYST_BASE,       0xE000_E010    ; Base address of the SysTick counter
-    .equ    TIMER_RESET_VAL, 0x00FF_FFFF    ; Reset value for the SysTick counter
+    .equ    SYST_BASE,       0xE000E010    // Base address of the SysTick counter
+    .equ    TIMER_RESET_VAL, 0x00FFFFFF    // Reset value for the SysTick counter
 
 
     .align 2
     .thumb_func
+    .global timer_init
     .type timer_init, %function
 /* Configures the timer used to measure function execution time */
 timer_init:
@@ -43,6 +44,7 @@ timer_init:
 
     .align 2
     .thumb_func
+    .global time_execution
     .type time_execution, %function
 /* The timing function is designed to work with the standard memcpy function
  * which takes three parameters. A fourth parameter, the pointer to the
@@ -68,6 +70,7 @@ time_execution:
 
     .align 2
     .thumb_func
+    .global tare
     .type tare, %function
 /* Test the function call overhead with a function that returns immediately*/
 tare:

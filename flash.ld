@@ -14,8 +14,8 @@
  */
 
 MEMORY {
-    FLASH (rx)  : ORIGIN = 0x0000_0000,  LENGTH = 0x20000 /* 128K */
-    RAM (rwx)   : ORIGIN = 0x1000_0000,  LENGTH = 0x2000  /*   8K */
+    FLASH (rx)  : ORIGIN = 0x00000000,  LENGTH = 0x20000 /* 128K */
+    RAM (rwx)   : ORIGIN = 0x10000000,  LENGTH = 0x2000  /*   8K */
 }
 
 /* The following symbols are referenced by this linker script and
@@ -82,7 +82,7 @@ SECTIONS {
      *
      * Per the ARM standard, the stack must be aligned on an eight-
      * byte Boundary. */
-	.stack ORIGIN(RAM) ALIGN(8) : {
+	.stack ALIGN(8) : {
 		__StackLimit = .;
 		*(.stack*)
 		. = __StackLimit + __stack_size__;

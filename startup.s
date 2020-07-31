@@ -129,7 +129,7 @@ bss_init:
 data_init:
     ldr     r0, =__data_start__
     ldr     r1, =__data_load_addr__
-    ldr     r2, =_data_end
+    ldr     r2, =__data_end__
     subs    r2, r0
     ble     .data_init_end
 .data_loop:
@@ -139,10 +139,10 @@ data_init:
     bgt     .data_loop
 .data_init_end:
 
-; Enable users to specify a value with which to
-; fill the main program stack. If undefined,
-; the stack memory will be uninitialized and its
-; contents undefined
+// Enable users to specify a value with which to
+// fill the main program stack. If undefined,
+// the stack memory will be uninitialized and its
+// contents undefined
 #ifdef STACK_FILL
 stack_init:
     ldr     r0, =__StackLimit
@@ -156,7 +156,7 @@ stack_init:
 #endif
     mov     r3, r1
 .stack_fill_loop:
-    stm     r0, {r1, r3}
+    stm     r0!, {r1, r3}
     subs    r2, #8
     bgt     .stack_fill_loop
 .stack_init_end:
