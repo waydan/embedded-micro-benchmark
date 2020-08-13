@@ -164,8 +164,8 @@ stack_init:
 
 
 /* Initialize and start the main program */
-    ldr     r0, =startup
-    blx     r0
+//    ldr     r0, =startup
+//    blx     r0
     ldr     r0, =main
     cpsie   i
     blx     r0

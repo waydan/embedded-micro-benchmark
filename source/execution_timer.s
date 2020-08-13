@@ -65,6 +65,9 @@ time_execution:
     /* Read the counter value and calculate elapsed time*/
     ldr     r2, [r4, #8]
     subs    r0, r5, r2
+    /* Shift the timer overflow bit into position 31 of the return value */
+    lsls    r1, r1, #31
+    orrs    r0, r1
     .size time_execution, . - time_execution
 
 
