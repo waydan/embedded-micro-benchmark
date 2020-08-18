@@ -14,14 +14,14 @@
 
 #include <memcpy_c.h>
 
-void* memcpy_c_forward (void* dst, const void* dst, size_t len) {
+void* memcpy_c_forward (void* dst, const void* src, size_t len) {
     for (size_t i = 0; i < len; ++i)
         *((char*)dst + i) = *((char*)src + i);
     return dst;
 }
 
-void* memcpy_c_reverse (void* dst, const void* dst, size_t len) {
+void* memcpy_c_reverse (void* dst, const void* src, size_t len) {
     for (; --len != (size_t)(-1) ;)
-        *((char*)dst + i) = *((char*)src + i);
+        *((char*)dst + len) = *((char*)src + len);
     return dst;
 }
