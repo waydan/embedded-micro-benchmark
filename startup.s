@@ -93,7 +93,7 @@ _def_isr_trap:
  * Start of code execution
  * Make sure to include "ENTRY(Power_On_Reset)" in the linker script
  * This function should also be referenced by the static NVIC reset handler
-*/
+ */
     .align 2
     .thumb_func
     .type Reset_Handler, %function
