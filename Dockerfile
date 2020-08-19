@@ -11,4 +11,4 @@ RUN wget https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-a
 RUN tar -xjf gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2 && rm gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2
 
 # Add arm-none-eabi toolchain to the path
-ENV PATH=${PATH}:`pwd`/gcc-arm-none-eabi-9-2020-q2-update/bin
+ENV PATH=${PATH}:/root/gcc-arm-none-eabi-9-2020-q2-update/bin
