@@ -58,6 +58,8 @@ time_execution:
     ldr     r5, =TIMER_RESET_VAL
     /* Reset the counter and overflow bit by writing to SYST_CVR */
     str     r0, [r4, #8]
+    /* Ensure the store completes before the function under test is called */
+    dsb
     /* Call the function under test */
     blx     r3
     /* Check if the timer overflowed */
