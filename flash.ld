@@ -15,7 +15,7 @@
 
 MEMORY {
     FLASH (rx)  : ORIGIN = 0x00000000,  LENGTH = 0x20000 /* 128K */
-    RAM (rwx)   : ORIGIN = 0x10000000,  LENGTH = 0x2000  /*   8K */
+    RAM (rwx)   : ORIGIN = 0x1FFFF000,  LENGTH = 0x4000  /*  16K */
 }
 
 /* The following symbols are referenced by this linker script and

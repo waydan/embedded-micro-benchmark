@@ -12,5 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#ifndef MEMCPY_H
+#define MEMCPY_H
+
 // Function signature for memcpy
 typedef (void*) (memcpy_ptr*)(void*, const void*, size_t);
+
+#endif // MEMCPY_H

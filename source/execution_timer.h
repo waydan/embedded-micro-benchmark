@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#ifndef EXECUTION_TIMER_H
+#define EXECUTION_TIMER_H
 
 #include <stdint.h>
 #include "memcpy.h"
@@ -22,3 +24,5 @@ void timer_init (void);
 int time_execution (void* dst, const void* src, size_t len, memcpy_ptr func);
 
 void* tare (void*, const void*, size_t);
+
+#endif // EXECUTION_TIMER_H
