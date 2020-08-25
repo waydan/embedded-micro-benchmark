@@ -143,6 +143,7 @@ data_init:
 // fill the main program stack. If undefined,
 // the stack memory will be uninitialized and its
 // contents undefined
+/*
 #ifdef STACK_FILL
 stack_init:
     ldr     r0, =__StackLimit
@@ -161,7 +162,7 @@ stack_init:
     bgt     .stack_fill_loop
 .stack_init_end:
 #endif ; defined(STACK_FILL)
-
+*/
 
 /* Initialize and start the main program */
 //    ldr     r0, =startup

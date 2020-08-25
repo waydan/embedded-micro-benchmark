@@ -12,17 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EXECUTION_TIMER_H
-#define EXECUTION_TIMER_H
+#ifndef MEMCPY_C_H
+#define MEMCPY_C_H
 
 #include "size.h"
-#include "memcpy.h"
 
-// Forward declare the timer utility functions
-void timer_init (void);
+void* memcpy_c_forward (void* dst, const void* src, size_t len);
 
-int time_execution (void* dst, const void* src, size_t len, memcpy_ptr func);
+void* memcpy_c_reverse (void* dst, const void* src, size_t len);
 
-void* tare (void*, const void*, size_t);
-
-#endif // EXECUTION_TIMER_H
+#endif // MEMCPY_C_H

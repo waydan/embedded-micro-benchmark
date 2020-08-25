@@ -17,7 +17,7 @@
 // image.See application note AN4507 and the chip-specific datasheet for
 // detailed instructions on configuring the flash and security features.
 
-    .section .FlashConfig, "a"
+    .section .flash_config, "a"
     .long 0xFFFFFFFF
     .long 0xFFFFFFFF
     .long 0xFFFFFFFF

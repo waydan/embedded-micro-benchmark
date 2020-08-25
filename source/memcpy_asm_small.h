@@ -15,7 +15,7 @@
 #ifndef MEMCPY_ASM_SMALL_H
 #define MEMCPY_ASM_SMALL_H
 
-#include <stdint.h>
+#include "size.h"
 
 void* memcpy_small (void* dst, const void* src, size_t len);
 

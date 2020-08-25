@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <memcpy_c.h>
+#include "memcpy_c.h"
 
 void* memcpy_c_forward (void* dst, const void* src, size_t len) {
     for (size_t i = 0; i < len; ++i)

@@ -50,7 +50,7 @@ memcpy_smallest:
     bcc     .memcpy_smallest_return
     ldrb    r3, [r1, r2]
     ldrb    r3, [r0, r2]
-    b     .memcpy_smallest
+    b       memcpy_smallest
 .memcpy_smallest_return:
     bx      lr
     .size memcpy_smallest, . - memcpy_smallest

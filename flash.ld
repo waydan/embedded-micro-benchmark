@@ -41,23 +41,25 @@ MEMORY {
 
 ENTRY(Reset_Handler)
 
+__stack_size__ = 0x80;
+__heap_size__ = 0x0;
+
 SECTIONS {
 
     /* The interrupt vector used during startup must be placed at
      * address 0. */
     .isr_vector 0x0 : {
         KEEP(*(.isr_vector))
-    }
+    } > FLASH
 
     /* The Kinetis device includes flash security features. Default
      * settings are loaded during power up reset from specific memory
      * addresses in flash. */
     .flash_config 0x400 : {
         KEEP(*(.flash_config*))
-    }
+    } > FLASH
 
 	.text : {
-		KEEP(*(.isr_vector))
 		*(.text*)
 		*(.rodata*)
 		*(.eh_frame*)

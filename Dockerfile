@@ -1,7 +1,7 @@
 FROM ubuntu:latest
 
 
-RUN apt-get update && apt-get install -y clang lld python3 python3-pip git wget libncurses5
+RUN apt-get update && apt-get install -y clang llvm lld python3 wget
 
 WORKDIR /root
 

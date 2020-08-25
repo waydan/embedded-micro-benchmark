@@ -15,7 +15,9 @@
 #ifndef MEMCPY_H
 #define MEMCPY_H
 
+#include "size.h"
+
 // Function signature for memcpy
-typedef (void*) (memcpy_ptr*)(void*, const void*, size_t);
+typedef void* (*memcpy_ptr)(void*, const void*, size_t);
 
 #endif // MEMCPY_H

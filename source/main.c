@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "execution_time.h"
+#include "execution_timer.h"
 #include "memcpy.h"
 
 #define GENERIC_RAM_ADDRESS 0x20000000
@@ -21,15 +21,15 @@ int main (void) {
 
     timer_init();
 
-    while(true)
+    while(1) {
 
         // Set safe default values for generic timing function parameters
-        void* default_dst = GENERIC_RAM_ADDRESS;
+        void* default_dst = (void*)GENERIC_RAM_ADDRESS;
         memcpy_ptr default_func = tare;
 
         // A breakpoint will be set for the timing function and parameters
         // will be loaded by debug probe for each benchmark test.
         // Guarantee that no data is copied if running unsupervised.
         time_execution(default_dst, default_dst, 0, default_func);
-
+    }
 }

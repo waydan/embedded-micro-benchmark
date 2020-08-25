@@ -12,17 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EXECUTION_TIMER_H
-#define EXECUTION_TIMER_H
+#ifndef SIZE_H
+#define SIZE_H
 
-#include "size.h"
-#include "memcpy.h"
+typedef unsigned int size_t;
 
-// Forward declare the timer utility functions
-void timer_init (void);
-
-int time_execution (void* dst, const void* src, size_t len, memcpy_ptr func);
-
-void* tare (void*, const void*, size_t);
-
-#endif // EXECUTION_TIMER_H
+#endif // SIZE_H
