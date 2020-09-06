@@ -96,6 +96,7 @@ _def_isr_trap:
  */
     .align 2
     .thumb_func
+    .global Reset_Handler
     .type Reset_Handler, %function
 Reset_Handler:
     cpsid   i                   @ disable all interupts during startup
@@ -110,34 +111,34 @@ wdog_disble:
     ldr     r0, =0x01D0         @ Disable watchdog timer
     strh    r0, [r1]            @ write WDOG_STCTRLH
 
-
-/* Clear BSS section */
-bss_init:
-    ldr     r0, =__bss_start__
-    ldr     r2, =__bss_end__
-    subs    r2, r0
-    ble     .bss_init_end       @ exit routine if .bss section is empty
-    movs    r1, #0
-.bss_loop:
-    stm     r0!, {r1}
-    subs    r1, #4
-    bgt     .bss_loop
-.bss_init_end:
-
-
-/* Initialize DATA section */
-data_init:
-    ldr     r0, =__data_start__
-    ldr     r1, =__data_load_addr__
-    ldr     r2, =__data_end__
-    subs    r2, r0
-    ble     .data_init_end
-.data_loop:
-    ldm     r1!, {r3}
-    subs    r2, #4
-    stm     r0!, {r3}
-    bgt     .data_loop
-.data_init_end:
+//
+///* Clear BSS section */
+//bss_init:
+//    ldr     r0, =__bss_start__
+//    ldr     r2, =__bss_end__
+//    subs    r2, r0
+//    ble     .bss_init_end       @ exit routine if .bss section is empty
+//    movs    r1, #0
+//.bss_loop:
+//    stm     r0!, {r1}
+//    subs    r1, #4
+//    bgt     .bss_loop
+//.bss_init_end:
+//
+//
+///* Initialize DATA section */
+//data_init:
+//    ldr     r0, =__data_start__
+//    ldr     r1, =__data_load_addr__
+//    ldr     r2, =__data_end__
+//    subs    r2, r0
+//    ble     .data_init_end
+//.data_loop:
+//    ldm     r1!, {r3}
+//    subs    r2, #4
+//    stm     r0!, {r3}
+//    bgt     .data_loop
+//.data_init_end:
 
 // Enable users to specify a value with which to
 // fill the main program stack. If undefined,

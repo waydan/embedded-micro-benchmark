@@ -41,8 +41,8 @@ MEMORY {
 
 ENTRY(Reset_Handler)
 
-__stack_size__ = 0x80;
-__heap_size__ = 0x0;
+__heap_size__  = 0x0000;
+__stack_size__ = 0x0400;
 
 SECTIONS {
 
@@ -76,18 +76,18 @@ SECTIONS {
 	} > FLASH
 
 	HIDDEN(__etext = ALIGN (4));
-
-
     /* The stack will be placed at the low address of RAM. In case
      * the stack overflows, it will colide with an unwritable
      * address space causing a hard fault instead of data corruption
      *
      * Per the ARM standard, the stack must be aligned on an eight-
      * byte Boundary. */
-	.stack ALIGN(8) : {
+	. = ORIGIN(RAM);
+
+	.stack ALIGN(8) (NOLOAD): {
 		__StackLimit = .;
 		*(.stack*)
-		. = __StackLimit + __stack_size__;
+		. += __stack_size__;
 		. = ALIGN(8);
 		__StackTop = .;
 	    PROVIDE(__stack = __StackTop);
@@ -122,6 +122,7 @@ SECTIONS {
      *
      * Per the ARM standard, the heap must be aligned on an eight-
      * byte Boundary. */
+	/*
 	.heap ALIGN(8) : {
         __end__ = .;
 		PROVIDE(end = .);
@@ -129,7 +130,8 @@ SECTIONS {
         . = ORIGIN(RAM) + LENGTH(RAM);
 		__HeapLimit = .;
 	} > RAM
-
+	*/
 	/* Check that the heap has sufficient size*/
-	ASSERT(SIZEOF(.heap) >= __heap_size__, "The heap section has insufficient size")
+/*	ASSERT(SIZEOF(.heap) >= __heap_size__, "The heap section has insufficient size")
+*/
 }

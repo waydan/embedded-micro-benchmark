@@ -17,6 +17,8 @@
 
 #define GENERIC_RAM_ADDRESS 0x20000000
 
+int useless[] = {0, 1, 2, 3, 4, 5, 6, 7};
+
 int main (void) {
 
     timer_init();
@@ -31,5 +33,6 @@ int main (void) {
         // will be loaded by debug probe for each benchmark test.
         // Guarantee that no data is copied if running unsupervised.
         time_execution(default_dst, default_dst, 0, default_func);
+        ++useless[0];
     }
 }
