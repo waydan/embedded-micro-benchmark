@@ -2,9 +2,8 @@
 
 # Compilation step
 
-CFLAGS="-c -nostdinc -nostdlib -I."
-
-CC="clang --target=armv6m-none-eabi -fomit-frame-pointer"
+CC="clang --target=armv6m-none-eabi"
+CFLAGS="-c -nostdinc -nostdlib -I. -fomit-frame-pointer"
 
 asm_files=`ls source/*.s`
 asm_sources="startup.s flash_config.s execution_timer.s memcpy_asm_small.s"
@@ -12,13 +11,28 @@ asm_sources="startup.s flash_config.s execution_timer.s memcpy_asm_small.s"
 c_files=`ls source/*.c`
 c_sources="main.c memcpy_test.c"
 
+mkdir -p object
+cd object
+
 echo "Compiling the following source files:"
-for f in asm_sources
+for f in $asm_sources
 do
-    echo $f
+    $CC  -c ../source/${f}
+    echo "\t$f"
 done
 
-for f in c_sources
+for f in $c_sources
 do
-    echo $f
+    $CC $CFLAGS -Os ../source/${f}
+    echo "\t$f"
 done
+
+
+# Linking step
+LINK_SCRIPT="flash.ld"
+
+arm-none-eabi-ld -T ../$LINK_SCRIPT *.o -o memcpy_test.elf
+
+
+# Export a binary
+arm-none-eabi-objcopy -O binary memcpy_test.elf memcpy_test.bin

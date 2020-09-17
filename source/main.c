@@ -15,6 +15,8 @@
 #include "execution_timer.h"
 #include "memcpy.h"
 
+#define GENERIC_RAM_ADDRESS 0x20000000
+
 int main (void) {
 
     timer_init();
