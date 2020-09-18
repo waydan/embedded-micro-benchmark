@@ -14,5 +14,8 @@ ENV PATH=${PATH}:/root/gcc-arm-none-eabi-9-2020-q2-update/bin
 # Ubuntu uses LLD 10.0 which has a bug when specifying a (NOLOAD) section
 # Use a newer release of Clang/LLVM to work around the issue
 RUN wget https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
-RUN tar -xJf clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz -C clang-10.0.1 && rm clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
+RUN tar -xJf clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz && rm clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04.tar.xz
+RUN mv clang+llvm-10.0.1-x86_64-linux-gnu-ubuntu-16.04 clang-10.0.1
+# Two shared libraries are needed for clang to work
+RUN apt-get install -y
 ENV PATH=${PATH}:/root/clang-10.0.1/bin

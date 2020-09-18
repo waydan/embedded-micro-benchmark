@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Compilation step
-
 CC="clang --target=armv6m-none-eabi"
 CFLAGS="-c -nostdinc -nostdlib -I. -fomit-frame-pointer"
 
@@ -14,12 +13,13 @@ c_sources="main.c memcpy_test.c"
 mkdir -p object
 cd object
 
-echo "Compiling the following source files:"
+sources=""
+
 for f in $asm_sources
 do
-    $CC  -c ../source/${f}
-    echo "\t$f"
+    sources="../source/${f} ${sources}"
 done
+$CC -c $sources
 
 for f in $c_sources
 do
@@ -29,10 +29,8 @@ done
 
 
 # Linking step
-LINK_SCRIPT="flash.ld"
-
-arm-none-eabi-ld -T ../$LINK_SCRIPT *.o -o memcpy_test.elf
+ld.lld -T ../flash.ld *.o -o memcpy_test.elf
 
 
 # Export a binary
-arm-none-eabi-objcopy -O binary memcpy_test.elf memcpy_test.bin
+llvm-objcopy -O binary memcpy_test.elf memcpy_test.bin

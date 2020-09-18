@@ -123,7 +123,7 @@ SECTIONS {
      * Per the ARM standard, the heap must be aligned on an eight-
      * byte Boundary. */
 	/*
-	.heap ALIGN(8) : {
+	.heap ALIGN(8) (NOLOAD) : {
         __end__ = .;
 		PROVIDE(end = .);
 		*(.heap*)
