@@ -26,6 +26,7 @@
     .align 2
     .thumb_func
     .type memcpy_small, %function
+    .global memcpy_small
 /* Reduces branch evaluation to once per loop at the cost of one extra
  * instruction */
 memcpy_small:
@@ -44,6 +45,7 @@ memcpy_small:
     .align 2
     .thumb_func
     .type memcpy_smallest, %function
+    .global memcpy_smallest
 /* Minimum function size but evaluates two branches per loop */
 memcpy_smallest:
     subs    r2, #1
