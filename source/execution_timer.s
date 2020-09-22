@@ -37,7 +37,7 @@ timer_init:
     str     r1, [r0, #4]
     /* Enable the timer, disable the interrupt, and use the processor clock */
     movs    r1, 0b101
-    strh    r1, [r0]
+    str    r1, [r0]
     bx      lr
     .size timer_init, . - timer_init
 
@@ -63,11 +63,12 @@ time_execution:
     /* Call the function under test */
     blx     r3
     /* Check if the timer overflowed */
-    ldrh    r1, [r4, #2]
+    ldr     r1, [r4]
     /* Read the counter value and calculate elapsed time*/
     ldr     r2, [r4, #8]
     subs    r0, r5, r2
     /* Shift the timer overflow bit into position 31 of the return value */
+    lsrs    r1, r1, #16
     lsls    r1, r1, #31
     orrs    r0, r1
     pop     {r4, r5, pc}
