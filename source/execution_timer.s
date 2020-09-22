@@ -70,6 +70,7 @@ time_execution:
     /* Shift the timer overflow bit into position 31 of the return value */
     lsls    r1, r1, #31
     orrs    r0, r1
+    bx      lr
     .size time_execution, . - time_execution
 
 
